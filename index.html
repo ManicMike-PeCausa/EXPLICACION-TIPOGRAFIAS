@@ -1,0 +1,299 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); }
+  .wrapper { padding: 1.5rem 0; }
+
+  .tabs { display: flex; gap: 8px; margin-bottom: 1.5rem; }
+  .tab-btn {
+    flex: 1; padding: 10px 16px; border-radius: var(--border-radius-md);
+    border: 1.5px solid transparent; cursor: pointer;
+    font-size: 14px; font-weight: 500; transition: all 0.2s;
+    background: var(--color-background-secondary);
+    color: var(--color-text-secondary);
+  }
+  .tab-btn.active-travel { background: #E0F4F4; color: #0F6E56; border-color: #5DCAA5; }
+  .tab-btn.active-retiro { background: #F0EFE8; color: #6B5D3F; border-color: #C7A86D; }
+
+  .section { display: none; }
+  .section.visible { display: block; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+
+  .card {
+    background: var(--color-background-primary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+    padding: 1rem 1.25rem;
+  }
+  .card-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.06em;
+    color: var(--color-text-tertiary); text-transform: uppercase; margin-bottom: 8px;
+  }
+  .card h3 { font-size: 15px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 6px; }
+
+  .color-swatch {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
+  }
+  .swatch { width: 36px; height: 36px; border-radius: 8px; flex-shrink: 0; border: 0.5px solid rgba(0,0,0,0.08); }
+  .swatch-info { display: flex; flex-direction: column; }
+  .swatch-name { font-size: 13px; font-weight: 500; color: var(--color-text-primary); }
+  .swatch-hex { font-size: 12px; color: var(--color-text-tertiary); font-family: var(--font-mono); }
+  .swatch-desc { font-size: 11px; color: var(--color-text-secondary); margin-top: 1px; }
+
+  .font-demo-title { font-size: 22px; font-weight: 500; margin-bottom: 4px; color: var(--color-text-primary); }
+  .font-demo-body { font-size: 14px; color: var(--color-text-secondary); line-height: 1.6; }
+  .font-tag { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 20px; margin-right: 4px; margin-bottom: 4px; }
+
+  .cta-example {
+    padding: 8px 16px; border-radius: var(--border-radius-md);
+    font-size: 13px; font-weight: 500; display: inline-block; margin: 4px 4px 4px 0;
+    color: white; border: none;
+  }
+
+  .structure-step {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 8px 0; border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .structure-step:last-child { border-bottom: none; }
+  .step-icon {
+    width: 28px; height: 28px; border-radius: 6px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 500;
+  }
+  .step-text h4 { font-size: 13px; font-weight: 500; color: var(--color-text-primary); }
+  .step-text p { font-size: 12px; color: var(--color-text-secondary); margin-top: 2px; line-height: 1.4; }
+
+  .audience-tag { display: inline-flex; align-items: center; gap: 5px; background: var(--color-background-secondary); border-radius: 20px; padding: 4px 10px; font-size: 12px; color: var(--color-text-secondary); margin: 3px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; }
+
+  @media (max-width: 520px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  }
+</style>
+
+<div class="wrapper">
+  <div class="tabs">
+    <button class="tab-btn active-travel" id="btn-travel" onclick="show('travel')">✦ Blog de Viajes</button>
+    <button class="tab-btn" id="btn-retiro" onclick="show('retiro')">◎ Retiro Espiritual</button>
+  </div>
+
+  <!-- ===== BLOG VIAJES ===== -->
+  <div class="section visible" id="travel">
+
+    <div class="card" style="margin-bottom:12px; border-left: 3px solid #1CA7A8; border-radius: 0 12px 12px 0;">
+      <div class="card-label">Público objetivo</div>
+      <div style="display:flex; flex-wrap:wrap; gap:4px; margin-top:4px;">
+        <span class="audience-tag"><span class="dot" style="background:#1CA7A8"></span>Hombres y mujeres</span>
+        <span class="audience-tag"><span class="dot" style="background:#FF6B4A"></span>20 – 60 años</span>
+        <span class="audience-tag"><span class="dot" style="background:#F4E1C1; border:1px solid #ddd"></span>Turismo y aventura</span>
+        <span class="audience-tag"><span class="dot" style="background:#1CA7A8"></span>Cultura y experiencias</span>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-label">Tipografía</div>
+        <div class="font-demo-title" style="font-family: Georgia, serif;">Montserrat</div>
+        <div class="font-demo-body">Para títulos: moderna, impacto visual.</div>
+        <div style="margin-top:10px;">
+          <span class="font-tag" style="background:#E0F4F4; color:#0F6E56;">Títulos → Montserrat</span>
+          <span class="font-tag" style="background:#FFF0E8; color:#993C1D;">Texto → Lora</span>
+        </div>
+        <div style="font-size:12px; color: var(--color-text-secondary); margin-top:8px; line-height:1.5;">
+          Legible en artículos largos · Jerarquía clara · Optimizada para móvil
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Colores</div>
+        <div class="color-swatch">
+          <div class="swatch" style="background:#1CA7A8;"></div>
+          <div class="swatch-info">
+            <span class="swatch-name">Turquesa</span>
+            <span class="swatch-hex">#1CA7A8</span>
+            <span class="swatch-desc">Primario · Mar, libertad, exploración</span>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="swatch" style="background:#F4E1C1;"></div>
+          <div class="swatch-info">
+            <span class="swatch-name">Beige arena</span>
+            <span class="swatch-hex">#F4E1C1</span>
+            <span class="swatch-desc">Secundario · Playa, descanso, naturaleza</span>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="swatch" style="background:#FF6B4A;"></div>
+          <div class="swatch-info">
+            <span class="swatch-name">Naranja coral</span>
+            <span class="swatch-hex">#FF6B4A</span>
+            <span class="swatch-desc">CTA · Alta visibilidad, más clics</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:12px;">
+      <div class="card-label">Copywriting — llamadas a la acción</div>
+      <div style="margin:10px 0 6px;">
+        <button class="cta-example" style="background:#FF6B4A;">Descubre la ruta completa</button>
+        <button class="cta-example" style="background:#1CA7A8;">Explora la guía completa</button>
+        <button class="cta-example" style="background:#FF6B4A;">Empieza tu próxima aventura</button>
+        <button class="cta-example" style="background:#1CA7A8;">Planifica tu viaje ahora</button>
+      </div>
+      <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 12px; margin-top:8px;">
+        <div style="font-size:11px; color:var(--color-text-tertiary); margin-bottom:6px; text-transform:uppercase; letter-spacing:0.05em;">Ejemplo completo</div>
+        <div style="font-size:17px; font-weight:500; color:var(--color-text-primary);">10 lugares secretos de Islandia</div>
+        <div style="font-size:13px; color:var(--color-text-secondary); margin:4px 0 10px;">Destinos que la mayoría de turistas no conoce</div>
+        <button class="cta-example" style="background:#FF6B4A;">Descubre la ruta completa</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Estructura visual</div>
+      <div class="structure-step">
+        <div class="step-icon" style="background:#E0F4F4; color:#0F6E56;">H</div>
+        <div class="step-text"><h4>Header</h4><p>Logo + menú (Destinos, Guías, Consejos, Contacto)</p></div>
+      </div>
+      <div class="structure-step">
+        <div class="step-icon" style="background:#FFF0E8; color:#993C1D;">H</div>
+        <div class="step-text"><h4>Hero</h4><p>Imagen gran destino · Título llamativo · Botón CTA naranja</p></div>
+      </div>
+      <div class="structure-step">
+        <div class="step-icon" style="background:#E0F4F4; color:#0F6E56;">A</div>
+        <div class="step-text"><h4>Artículos destacados</h4><p>3–4 artículos con imagen y extracto</p></div>
+      </div>
+      <div class="structure-step">
+        <div class="step-icon" style="background:#F4E1C1; color:#993C1D;">G</div>
+        <div class="step-text"><h4>Guías populares + Mapa</h4><p>Sección de destinos con mapa interactivo</p></div>
+      </div>
+      <div class="structure-step">
+        <div class="step-icon" style="background:#FFF0E8; color:#993C1D;">N</div>
+        <div class="step-text"><h4>Newsletter</h4><p>Suscripción para recibir nuevas guías</p></div>
+      </div>
+      <div class="structure-step">
+        <div class="step-icon" style="background: var(--color-background-secondary); color:var(--color-text-secondary);">F</div>
+        <div class="step-text"><h4>Footer</h4><p>Redes sociales · Contacto · Enlaces legales</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== RETIRO ESPIRITUAL ===== -->
+  <div class="section" id="retiro">
+
+    <div class="card" style="margin-bottom:12px; border-left: 3px solid #9CAF88; border-radius: 0 12px 12px 0;">
+      <div class="card-label">Público objetivo</div>
+      <div style="display:flex; flex-wrap:wrap; gap:4px; margin-top:4px;">
+        <span class="audience-tag"><span class="dot" style="background:#9CAF88"></span>Hombres y mujeres</span>
+        <span class="audience-tag"><span class="dot" style="background:#C7A86D"></span>20 – 60 años</span>
+        <span class="audience-tag"><span class="dot" style="background:#F5F1E6; border:1px solid #ddd"></span>Bienestar y meditación</span>
+        <span class="audience-tag"><span class="dot" style="background:#9CAF88"></span>Crecimiento personal</span>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-label">Tipografía</div>
+        <div class="font-demo-title" style="font-family: Georgia, serif; font-style: italic;">Cormorant Garamond</div>
+        <div class="font-demo-body">Para títulos: elegante, serena, espiritual.</div>
+        <div style="margin-top:10px;">
+          <span class="font-tag" style="background:#EAF0E4; color:#3B6D11;">Títulos → Cormorant Garamond</span>
+          <span class="font-tag" style="background:#F5F1E6; color:#6B5D3F;">Texto → Raleway</span>
+        </div>
+        <div style="font-size:12px; color: var(--color-text-secondary); margin-top:8px; line-height:1.5;">
+          Serenidad · Elegancia · Transmite espiritualidad
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Colores</div>
+        <div class="color-swatch">
+          <div class="swatch" style="background:#9CAF88;"></div>
+          <div class="swatch-info">
+            <span class="swatch-name">Verde salvia</span>
+            <span class="swatch-hex">#9CAF88</span>
+            <span class="swatch-desc">Primario · Naturaleza, equilibrio, sanación</span>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="swatch" style="background:#F5F1E6; border: 0.5px solid #ddd;"></div>
+          <div class="swatch-info">
+            <span class="swatch-name">Beige claro</span>
+            <span class="swatch-hex">#F5F1E6</span>
+            <span class="swatch-desc">Secundario · Calma, simplicidad, paz</span>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="swatch" style="background:#C7A86D;"></div>
+          <div class="swatch-info">
+            <span class="swatch-name">Dorado suave</span>
+            <span class="swatch-hex">#C7A86D</span>
+            <span class="swatch-desc">CTA · Valor, exclusividad, bienestar</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:12px;">
+      <div class="card-label">Copywriting — llamadas a la acción</div>
+      <div style="margin:10px 0 6px;">
+        <button class="cta-example" style="background:#C7A86D;">Reserva tu retiro</button>
+        <button class="cta-example" style="background:#9CAF88;">Empieza tu transformación</button>
+        <button class="cta-example" style="background:#C7A86D;">Encuentra tu paz interior</button>
+        <button class="cta-example" style="background:#9CAF88;">Únete a la experiencia</button>
+      </div>
+      <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 12px; margin-top:8px;">
+        <div style="font-size:11px; color:var(--color-text-tertiary); margin-bottom:6px; text-transform:uppercase; letter-spacing:0.05em;">Ejemplo completo</div>
+        <div style="font-size:17px; font-weight:500; color:var(--color-text-primary); font-style:italic;">3 días para reconectar contigo mismo</div>
+        <div style="font-size:13px; color:var(--color-text-secondary); margin:4px 0 10px;">Meditación, naturaleza y silencio guiado</div>
+        <button class="cta-example" style="background:#C7A86D;">Reserva tu plaza</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Estructura visual</div>
+      <div class="structure-step">
+        <div class="step-icon" style="background:#EAF0E4; color:#3B6D11;">H</div>
+        <div class="step-text"><h4>Header</h4><p>Logo minimalista + menú simple y limpio</p></div>
+      </div>
+      <div class="structure-step">
+        <div class="step-icon" style="background:#F5F1E6; color:#6B5D3F;">H</div>
+        <div class="step-text"><h4>Hero</h4><p>Imagen de naturaleza · Frase inspiradora · Botón CTA dorado</p></div>
+      </div>
+      <div class="structure-step">
+        <div class="step-icon" style="background:#EAF0E4; color:#3B6D11;">B</div>
+        <div class="step-text"><h4>Sección beneficios</h4><p>Beneficios del retiro de forma visual y clara</p></div>
+      </div>
+      <div class="structure-step">
+        <div class="step-icon" style="background:#F5F1E6; color:#6B5D3F;">P</div>
+        <div class="step-text"><h4>Programa del retiro</h4><p>Actividades y horarios detallados</p></div>
+      </div>
+      <div class="structure-step">
+        <div class="step-icon" style="background:#FDF5E8; color:#854F0B;">T</div>
+        <div class="step-text"><h4>Testimonios + Galería</h4><p>Opiniones reales y fotos del espacio</p></div>
+      </div>
+      <div class="structure-step">
+        <div class="step-icon" style="background:#C7A86D; color:white;">CTA</div>
+        <div class="step-text"><h4>CTA final</h4><p>Reserva tu plaza — botón dorado prominente</p></div>
+      </div>
+      <div class="structure-step">
+        <div class="step-icon" style="background: var(--color-background-secondary); color:var(--color-text-secondary);">F</div>
+        <div class="step-text"><h4>Footer</h4><p>Contacto · Ubicación · Redes sociales</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function show(tab) {
+  document.getElementById('travel').classList.remove('visible');
+  document.getElementById('retiro').classList.remove('visible');
+  document.getElementById('btn-travel').className = 'tab-btn';
+  document.getElementById('btn-retiro').className = 'tab-btn';
+  document.getElementById(tab).classList.add('visible');
+  if (tab === 'travel') document.getElementById('btn-travel').classList.add('active-travel');
+  else document.getElementById('btn-retiro').classList.add('active-retiro');
+}
+</script>
